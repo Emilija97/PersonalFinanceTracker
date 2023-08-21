@@ -30,8 +30,8 @@ pub async fn cleanup(pool: &PgPool, user_id: Uuid, budget_id: Option<Uuid>) {
 
     tables.push(("users", user_id));
 
-    if let Some(cat_id) = budget_id {
-        tables.push(("budgets", cat_id));
+    if let Some(bud_id) = budget_id {
+        tables.push(("budgets", bud_id));
     }
 
     for (table, id) in tables.iter() {

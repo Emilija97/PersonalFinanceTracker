@@ -10,7 +10,7 @@ pub struct SavingGoalInDTO {
     pub user_id: Uuid,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SavingGoalOutDTO {
     pub id: Uuid,
     pub title: String,

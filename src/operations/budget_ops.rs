@@ -30,7 +30,7 @@ pub async fn create_budget(pool: &PgPool, budget_dto: &BudgetInDTO) -> Result<Bu
     .bind(&budget_dto.start_date)
     .bind(&budget_dto.end_date)
     .bind(&budget_dto.user_id)
-    .bind(&budget_dto.category_id) // This is an Option<Uuid>, so it's okay if it's None
+    .bind(&budget_dto.category_id)
     .fetch_one(pool)
     .await?;
 

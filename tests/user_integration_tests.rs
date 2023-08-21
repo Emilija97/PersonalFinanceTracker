@@ -69,7 +69,13 @@ async fn create_user_integration_test_type_two() {
 
 #[rocket::async_test]
 async fn get_all_users_integration_test() {
-    let (client, _pool) = setup().await;
+    let (client, pool) = setup().await;
+    let user_dto = UserInDTO {
+        username: "testusergetall".to_string(),
+        email: "testusergetall@example.com".to_string(),
+    };
+
+    let _user_response = create_user(&pool, &user_dto).await;
 
     let response = client.get("/users").dispatch().await;
 
@@ -80,6 +86,8 @@ async fn get_all_users_integration_test() {
         serde_json::from_str(&response_body).expect("Valid list of UserOutDTO");
 
     assert!(users.len() > 0);
+
+    cleanup_test_user(&pool, "testusergetall", "testusergetall@example.com").await;
 }
 
 #[rocket::async_test]
