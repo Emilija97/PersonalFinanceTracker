@@ -5,14 +5,14 @@ use crate::{dtos::transaction_dtos::TransactionOutDTO, enums::custom_enums::Tran
 
 #[derive(Debug, Serialize, Deserialize, sqlx::FromRow)]
 pub struct Transaction {
-    id: Uuid,
-    title: String,
-    amount: f64,
-    date: chrono::NaiveDateTime,
-    category_id: Uuid,
-    transaction_type: TransactionType,
-    user_id: Uuid,
-    account_id: Uuid,
+    pub id: Uuid,
+    pub title: String,
+    pub amount: f64,
+    pub date: chrono::NaiveDateTime,
+    pub category_id: Uuid,
+    pub transaction_type: TransactionType,
+    pub user_id: Uuid,
+    pub account_id: Uuid,
 }
 
 impl Transaction {

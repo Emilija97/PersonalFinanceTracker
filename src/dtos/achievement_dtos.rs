@@ -8,7 +8,7 @@ pub struct AchievementInDTO {
     pub amount_saved: f64,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct AchievementOutDTO {
     pub id: Uuid,
     pub goal_id: Uuid,

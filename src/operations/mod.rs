@@ -1,3 +1,4 @@
+pub mod account_ops;
 pub mod achievement_ops;
 pub mod budget_ops;
 pub mod category_ops;

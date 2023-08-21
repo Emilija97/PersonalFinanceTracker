@@ -33,10 +33,13 @@
 
 // // extern crate personal_finance_tracker;
 use personal_finance_tracker::{create_rocket, db};
-use rocket::local::blocking::Client;
+use rocket::local::asynchronous::Client;
 
-pub async fn setup() -> Client {
+pub async fn setup() -> (Client, sqlx::Pool<sqlx::Postgres>) {
     let pool: sqlx::Pool<sqlx::Postgres> = db::conn::establish_connection(true).await;
-    let rocket = create_rocket(pool);
-    Client::tracked(rocket).expect("valid rocket instance")
+    let rocket = create_rocket(pool.clone());
+    let client = Client::tracked(rocket)
+        .await
+        .expect("valid rocket instance");
+    (client, pool)
 }
