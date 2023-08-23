@@ -1,0 +1,766 @@
+{
+	"info": {
+		"_postman_id": "8793bd8a-296c-4a39-9d80-a7f6edb0e61a",
+		"name": "Personal Transaction Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12534150"
+	},
+	"item": [
+		{
+			"name": "USER CRUD",
+			"item": [
+				{
+					"name": "User - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"user_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"first_userrrr\",\n    \"email\": \"first_uuuser@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - GET all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - GET user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/{{user_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - GET user by id Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"first_userrrr_updated\",\n    \"email\": \"first_uuuser@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/483f4a72-0184-47db-880d-29258b7967e1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"483f4a72-0184-47db-880d-29258b7967e1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ACCOUNT CRUD",
+			"item": [
+				{
+					"name": "Account - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"account_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test updated\",\n    \"balance\": 150.0,\n    \"account_type\": \"Bank\",\n    \"user_id\": \"{{user_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account - GET all accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account - GET account by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/{{account_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"{{account_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account - UPDATE account by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Emily Bank Account\",\n    \"balance\": 1500.0,\n    \"account_type\": \"Bank\",\n    \"user_id\": \"9feb5c1a-9929-40f0-b753-ca4ba56affb2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/a496b1e1-97ae-462f-a010-1eeef5c63bf6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"a496b1e1-97ae-462f-a010-1eeef5c63bf6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CATEGORY CRUD",
+			"item": [
+				{
+					"name": "Category - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"category_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Groceries\",\n    \"user_id\": \"{{user_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category - GET all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category - GET category by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories/{{category_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"{{category_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category - UPDATE category by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Groceries updated\",\n    \"user_id\": \"{{user_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categories/{{category_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"{{category_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TRANSACTION CRUD",
+			"item": [
+				{
+					"name": "Transaction - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"transaction_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test income transaction\",\n    \"amount\": 100.0,\n    \"transaction_type\": \"Income\",\n    \"user_id\": \"{{user_id}}\",\n    \"date\": \"2023-08-23T12:30:00\",\n    \"category_id\": \"{{category_id}}\",\n    \"account_id\": \"{{account_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction - GET all transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction - GET transaction by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/transactions/{{transaction_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"{{transaction_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction - UPDATE transaction by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test income transaction updated amount\",\n    \"amount\": 1000.0,\n    \"transaction_type\": \"Income\",\n    \"user_id\": \"{{user_id}}\",\n    \"date\": \"2023-08-23T12:35:00\",\n    \"category_id\": \"{{category_id}}\",\n    \"account_id\": \"{{account_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/transactions/{{transaction_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"transactions",
+								"{{transaction_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BUDGET CRUD",
+			"item": [
+				{
+					"name": "Budget - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"budget_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Groceries budget\",\n    \"user_id\": \"{{user_id}}\",\n    \"amount\": 100.0,\n    \"start_date\": \"2023-08-18T18:30:00\",\n    \"end_date\": \"2023-08-28T18:30:00\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/budgets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"budgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Budget - GET all budgets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/budgets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"budgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Budget - GET budget by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/budgets/{{budget_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"budgets",
+								"{{budget_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Budget - UPDATE budget by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Groceries budget updated amount\",\n    \"user_id\": \"{{user_id}}\",\n    \"amount\": 200.0,\n    \"start_date\": \"2023-08-18T18:30:00\",\n    \"end_date\": \"2023-08-28T18:30:00\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/budgets/{{budget_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"budgets",
+								"{{budget_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SAVING GOAL CRUD",
+			"item": [
+				{
+					"name": "Saving Goal - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"saving_goal_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Year Gifts\",\n    \"target_amount\": 1000.0,\n    \"current_amount\": 100.0,\n    \"deadline\": \"2023-12-30\",\n    \"user_id\": \"{{user_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/saving_goals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"saving_goals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Saving Goal - GET all saving_goals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/saving_goals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"saving_goals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Saving Goal - GET saving goal by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/saving_goals/{{saving_goal_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"saving_goals",
+								"{{saving_goal_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Saving Goal - UPDATE saving goal by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Year Gifts\",\n    \"target_amount\": 1000.0,\n    \"current_amount\": 200.0,\n    \"deadline\": \"2023-12-30\",\n    \"user_id\": \"{{user_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/saving_goals/{{saving_goal_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"saving_goals",
+								"{{saving_goal_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ACHIEVEMENT CRUD",
+			"item": [
+				{
+					"name": "Achievement - POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successfull\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"achievement_id\", jsonData.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"goal_id\": \"{{saving_goal_id}}\",\n    \"amount_saved\": 1000.0,\n    \"date_achieved\": \"2023-12-01T09:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/achievements",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"achievements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Achievement - GET all achievements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/achievements",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"achievements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Achievement - GET achievement by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/achievements/{{achievement_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"achievements",
+								"{{achievement_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Achievement - UPDATE achievement by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"goal_id\": \"{{saving_goal_id}}\",\n    \"amount_saved\": 1000.0,\n    \"date_achieved\": \"2023-11-20T09:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/achievements/{{achievement_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"achievements",
+								"{{achievement_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
