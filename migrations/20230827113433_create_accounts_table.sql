@@ -1,4 +1,4 @@
--- Your SQL goes here
+-- Add migration script here
 CREATE TYPE account_type AS ENUM (
     'bank',
     'cash',

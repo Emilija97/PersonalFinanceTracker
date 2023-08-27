@@ -1,4 +1,4 @@
--- Your SQL goes here
+-- Add migration script here
 CREATE TYPE transaction_type AS ENUM ('Income', 'Expense');
 
 CREATE TABLE transactions (

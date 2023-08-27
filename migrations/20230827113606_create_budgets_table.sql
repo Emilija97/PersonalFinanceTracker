@@ -1,4 +1,4 @@
--- Your SQL goes here
+-- Add migration script here
 CREATE TABLE budgets (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name TEXT NOT NULL,

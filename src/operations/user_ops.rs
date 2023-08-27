@@ -1,3 +1,4 @@
+use chrono::Local;
 // use crate::dtos::user_dtos::UserInDTO;
 // use crate::models::user::User;
 use sqlx::{postgres::PgPool, Error};
@@ -49,13 +50,14 @@ pub async fn update_user_in_db(
     let user = sqlx::query_as::<_, User>(
         r#"
         UPDATE users
-        SET username = $1, email = $2
-        WHERE id = $3
+        SET username = $1, email = $2, updated_at = $3
+        WHERE id = $4
         RETURNING id, username, email, created_at, updated_at
     "#,
     )
     .bind(&user_dto.username)
     .bind(&user_dto.email)
+    .bind(Local::now().naive_local())
     .bind(user_id)
     .fetch_one(pool)
     .await?;
